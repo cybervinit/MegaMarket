@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.inos.megamarket.R;
+import com.inos.megamarket.ui.login.LoginActivity;
 import com.inos.megamarket.ui.onboarding.OnboardingActivity;
 
 public class SplashScreenActivity extends AppCompatActivity implements ISplashScreenView {
@@ -27,10 +28,10 @@ public class SplashScreenActivity extends AppCompatActivity implements ISplashSc
         if (firstAppOpen) {
             startActivity(new Intent(SplashScreenActivity.this, OnboardingActivity.class));
         } else {
-            // TODO: Start the next activity;
-            Toast.makeText(getBaseContext(), "Start actual app work here...", Toast.LENGTH_LONG).show();
+            // TODO: may need to check if user logged in from last session;
+            startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
         }
-        // this.finish();
+        this.finish();
     }
 
     @Override

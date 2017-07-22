@@ -18,7 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.onboarding.OnboardingActivity"></activity>
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:theme="@style/NoActionbarTheme" />
+
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:theme="@style/NoActionbarTheme"/>
     </application>
 
 </manifest>
