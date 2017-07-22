@@ -5,8 +5,9 @@ package com.inos.megamarket.data.interfaces;
  */
 
 public interface ISharedPrefRepo {
-    boolean get(String key);
 
-    void write(String key, String defaultVal);
+    boolean getBool(String key);
+
+    void writeBool(String key, boolean val);
 
 }
