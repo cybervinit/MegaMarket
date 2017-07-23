@@ -2,6 +2,8 @@ package com.inos.megamarket.ui.splash_screen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,6 +16,9 @@ import android.widget.Toast;
 import com.inos.megamarket.R;
 import com.inos.megamarket.ui.login.LoginActivity;
 import com.inos.megamarket.ui.onboarding.OnboardingActivity;
+
+import java.util.List;
+import java.util.Locale;
 
 public class SplashScreenActivity extends AppCompatActivity implements ISplashScreenView {
 
@@ -30,6 +35,7 @@ public class SplashScreenActivity extends AppCompatActivity implements ISplashSc
         } else {
             // TODO: may need to check if user logged in from last session;
             startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
+
         }
         this.finish();
     }
