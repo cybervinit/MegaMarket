@@ -29,14 +29,6 @@ public class SplashScreenActivity extends AppCompatActivity implements ISplashSc
         super.onCreate(savedInstanceState);
         // FIXME: may need to setContentView(...);
 
-
-        if (true) {
-            // FIXME: TEMP
-            startActivity(new Intent(SplashScreenActivity.this, OnboardingActivity.class));
-            finish();
-            return;
-        }
-
         this.mSplashScreenPresenter = new SplashScreenPresenter(this);
         boolean firstAppOpen = this.mSplashScreenPresenter.getFirstAppOpen();
 
