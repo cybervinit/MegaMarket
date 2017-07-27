@@ -28,16 +28,27 @@ public class SplashScreenActivity extends AppCompatActivity implements ISplashSc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // FIXME: may need to setContentView(...);
+
+
+        if (true) {
+            // FIXME: TEMP
+            startActivity(new Intent(SplashScreenActivity.this, OnboardingActivity.class));
+            finish();
+            return;
+        }
+
         this.mSplashScreenPresenter = new SplashScreenPresenter(this);
         boolean firstAppOpen = this.mSplashScreenPresenter.getFirstAppOpen();
+
+
+
         if (firstAppOpen) {
             startActivity(new Intent(SplashScreenActivity.this, OnboardingActivity.class));
         } else {
             // TODO: may need to check if user logged in from last session;
             startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
-
         }
-        this.finish();
+
     }
 
     @Override
