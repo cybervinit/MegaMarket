@@ -34,4 +34,6 @@ dependencies {
     compile 'com.github.apl-devs:appintro:v4.2.0' // Onboarding
     compile 'com.afollestad.material-dialogs:core:0.9.4.5' // Material Dialogs
     compile 'com.github.dmytrodanylyk:android-morphing-button:98a4986e56' // Progress button
+    compile 'com.squareup.retrofit2:retrofit:2.3.0' // Retrofit for API calls
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0' // Gson converter for retrofit
 }

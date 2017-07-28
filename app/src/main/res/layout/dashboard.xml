@@ -2,24 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tempTvRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rank #9"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textSize="30sp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tempTvRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rank #9"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:textSize="30sp"/>
 
-    <TextView
-        android:id="@+id/tempTvFinancialAmount"
+        <TextView
+            android:id="@+id/tempTvFinancialAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$41.5k"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tempTvRank"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buy_stock_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$41.5k"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tempTvRank"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"/>
+        android:text="@string/buy"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/stocksRecView"

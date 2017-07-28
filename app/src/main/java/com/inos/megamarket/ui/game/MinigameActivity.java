@@ -1,4 +1,4 @@
-package com.inos.megamarket.ui;
+package com.inos.megamarket.ui.game;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

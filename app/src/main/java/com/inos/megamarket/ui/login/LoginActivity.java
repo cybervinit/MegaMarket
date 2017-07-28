@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // FIXME: impl login
         // TODO: use button lib
-        // startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+
 
         // TODO: TEMP
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -48,7 +48,10 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)), 9001);
+                // TODO: need bottom line for Google SignIn
+                // startActivityForResult(new Intent(Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)), 9001);
+                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+
             }
         });
 

@@ -34,7 +34,8 @@
             android:name=".ui.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionbarTheme" />
-        <activity android:name=".ui.MinigameActivity"></activity>
+        <activity android:name=".ui.game.MinigameActivity" />
+        <activity android:name=".ui.buy_stock.BuyStockActivity"></activity>
     </application>
 
 </manifest>
