@@ -1,11 +1,14 @@
 package com.inos.megamarket.ui.dashboard;
 
+import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inos.megamarket.R;
 
@@ -23,19 +26,21 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
     RecyclerView mStocksRecView;
     StocksAdapter mStocksRecViewAdapter;
 
+    // Sell stock dialog:
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
 
-        // Init feature 1:
+        // Init account summary feature:
         this.mRankTv = (TextView) findViewById(R.id.tempTvRank);
         this.mFinancialAmountTv = (TextView) findViewById(R.id.tempTvFinancialAmount);
         this.mAccountSummaryPresenter = new AccountSummaryPresenter(this);
 
 
-        // Init feature 2:
+        // Init stock list feature:
 
         this.mStocksRecView = (RecyclerView) findViewById(R.id.stocksRecView);
         this.mStocksRecViewAdapter = new StocksAdapter();
@@ -44,6 +49,27 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
         mStocksRecView.setAdapter(this.mStocksRecViewAdapter);
         this.mStocksPresenter = new StocksPresenter(this);
 
+        // TODO: Swipe feature
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+
+            @Override
+            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                // TODO: here is where you change the colour and stuff. BEAUTIFY
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        };
+
+        ItemTouchHelper itHelper = new ItemTouchHelper(simpleCallback);
+        itHelper.attachToRecyclerView(this.mStocksRecView);
 
 
 
