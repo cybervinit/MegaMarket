@@ -1,6 +1,7 @@
 package com.inos.megamarket.ui.dashboard;
 
 import android.text.Layout;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import com.inos.megamarket.R;
 
 import java.util.ArrayList;
+import java.util.jar.Pack200;
 
 /**
  * Created by vinit on 2017-07-23.
@@ -48,9 +50,31 @@ public class StocksPresenter implements IStocksPresenter {
     }
 
     @Override
-    public void bindViewHolder(StocksViewHolder holder, int position) {
+    public void bindViewHolder(StocksViewHolder holder, final int position, int expanded) {
         holder.mStockNameTv.setText("Stock Name"+position);
         holder.mStockPriceTv.setText("$ 100");
+
+        // TODO: implement card expansion feature
+        final boolean isExpanded = position == expanded;
+        holder.mCompressedView.setVisibility(isExpanded? View.INVISIBLE : View.VISIBLE);
+        holder.mExpandedView.setVisibility(isExpanded? View.VISIBLE : View.INVISIBLE);
+        if (isExpanded) {
+            holder.mCompressedView.getLayoutParams().height = 0;
+            holder.mExpandedView.getLayoutParams().height  = 300;
+        } else {
+            holder.mCompressedView.getLayoutParams().height = 100;
+            holder.mExpandedView.getLayoutParams().height  = 0;
+        }
+
+        holder.itemView.setActivated(isExpanded);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mStocksView.setCardExpandedPosition(isExpanded ? -1 : position);
+                //mStocksView.beginTransition();
+                mStocksView.notifyDatasetUpdated();
+            }
+        });
     }
 
     @Override

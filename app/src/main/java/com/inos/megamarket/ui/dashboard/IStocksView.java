@@ -6,4 +6,6 @@ package com.inos.megamarket.ui.dashboard;
 
 public interface IStocksView {
     void notifyDatasetUpdated();
+    void setCardExpandedPosition(int newPos);
+    void beginTransition();
 }

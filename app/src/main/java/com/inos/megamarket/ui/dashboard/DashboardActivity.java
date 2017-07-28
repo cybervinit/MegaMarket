@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.transition.TransitionManager;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,27 +50,7 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
         mStocksRecView.setAdapter(this.mStocksRecViewAdapter);
         this.mStocksPresenter = new StocksPresenter(this);
 
-        // TODO: Swipe feature
-        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
-            }
-
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                // TODO: here is where you change the colour and stuff. BEAUTIFY
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-            }
-        };
-
-        ItemTouchHelper itHelper = new ItemTouchHelper(simpleCallback);
-        itHelper.attachToRecyclerView(this.mStocksRecView);
+        // TODO: Expand feature
 
 
 
@@ -90,9 +71,25 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
         mStocksRecViewAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void setCardExpandedPosition(int newPos) {
+        this.mStocksRecViewAdapter.setExpandedPos(newPos);
+    }
+
+    @Override
+    public void beginTransition() {
+        TransitionManager.beginDelayedTransition(this.mStocksRecView);
+        this.mStocksRecViewAdapter.notifyDataSetChanged();
+    }
+
 
     private class StocksAdapter extends RecyclerView.Adapter<StocksViewHolder> {
 
+        private int mExpandedPos;
+
+        public StocksAdapter() {
+            this.mExpandedPos= -1;
+        }
 
         @Override
         public StocksViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -101,12 +98,16 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
 
         @Override
         public void onBindViewHolder(StocksViewHolder holder, int position) {
-            mStocksPresenter.bindViewHolder(holder, position);
+            mStocksPresenter.bindViewHolder(holder, position, this.mExpandedPos);
         }
 
         @Override
         public int getItemCount() {
             return mStocksPresenter.getStocksAmount();
+        }
+
+        public void setExpandedPos(int newPos) {
+            this.mExpandedPos = newPos;
         }
 
     }
