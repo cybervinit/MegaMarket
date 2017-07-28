@@ -1,5 +1,6 @@
 package com.inos.megamarket.ui.dashboard;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.inos.megamarket.R;
+import com.inos.megamarket.ui.MinigameActivity;
 
 public class DashboardActivity extends AppCompatActivity implements IAccountSummaryView, IStocksView {
 
@@ -52,11 +54,6 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
         mStocksRecView.setLayoutManager(new LinearLayoutManager(this));
         mStocksRecView.setAdapter(this.mStocksRecViewAdapter);
         this.mStocksPresenter = new StocksPresenter(this);
-
-        // TODO: Expand feature
-
-
-
     }
 
     @Override
@@ -96,6 +93,8 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         Toast.makeText(getBaseContext(), which.toString(), Toast.LENGTH_SHORT).show();
+                        // TODO: Add checkmark toast and "you will be informed once buyer wants to buy";
+                        startActivity(new Intent(DashboardActivity.this, MinigameActivity.class));
                     }
                 })
                 .onNegative(new MaterialDialog.SingleButtonCallback() {

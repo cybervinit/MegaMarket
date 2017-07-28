@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "771949610996",
+    "project_id": "catch-9f520"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771949610996:android:e530daed68ff06db",
+        "android_client_info": {
+          "package_name": "com.inos.megamarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771949610996-j1mlq1sukruqur0h0mmgehbg5ptot79g.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "771949610996-q4eh2d489aag8pfi0gcis9t4maf5prbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.inos.megamarket",
+            "certificate_hash": "a3476adc28de1dee0a4d5e5a7651e3a3abd3653e"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcc3PTTvG2QRqC88TXh8kCPYWsHTWBQ_A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
