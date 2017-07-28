@@ -1,6 +1,7 @@
 package com.inos.megamarket.ui.dashboard;
 
 import android.graphics.Canvas;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.inos.megamarket.R;
 
 public class DashboardActivity extends AppCompatActivity implements IAccountSummaryView, IStocksView {
@@ -80,6 +83,29 @@ public class DashboardActivity extends AppCompatActivity implements IAccountSumm
     public void beginTransition() {
         TransitionManager.beginDelayedTransition(this.mStocksRecView);
         this.mStocksRecViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void makeStockSellDialog(String[] stockContent) {
+        new MaterialDialog.Builder(this)
+                .title(R.string.sell)
+                .content(stockContent[0])
+                .positiveText(R.string.sell)
+                .negativeText("cancel")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        Toast.makeText(getBaseContext(), which.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                })
+                .build()
+                .show();
     }
 
 

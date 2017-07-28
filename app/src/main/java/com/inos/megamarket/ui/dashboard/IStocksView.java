@@ -7,5 +7,6 @@ package com.inos.megamarket.ui.dashboard;
 public interface IStocksView {
     void notifyDatasetUpdated();
     void setCardExpandedPosition(int newPos);
-    void beginTransition();
+    void beginTransition(); // TODO: remove? Has weird animation
+    void makeStockSellDialog(String[] stockContent);
 }

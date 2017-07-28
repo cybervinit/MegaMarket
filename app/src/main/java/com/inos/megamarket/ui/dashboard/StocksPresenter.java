@@ -28,7 +28,7 @@ public class StocksPresenter implements IStocksPresenter {
         this.mStocksView = stocksView;
         this.mStockArray = new ArrayList<>();
         for (int i = 0; i < 25; i++) {
-            this.mStockArray.add("Stock #"+i);
+            this.mStockArray.add("STOCK --> "+i);
         }
         this.initData();
     }
@@ -51,17 +51,24 @@ public class StocksPresenter implements IStocksPresenter {
 
     @Override
     public void bindViewHolder(StocksViewHolder holder, final int position, int expanded) {
-        holder.mStockNameTv.setText("Stock Name"+position);
+        holder.mStockNameTv.setText(mStockArray.get(position));
         holder.mStockPriceTv.setText("$ 100");
+        holder.mSellStockBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] stockContent = {mStockArray.get(position)};
+                mStocksView.makeStockSellDialog(stockContent);
+            }
+        });
 
         // TODO: implement card expansion feature
         final boolean isExpanded = position == expanded;
         holder.mCompressedView.setVisibility(isExpanded? View.INVISIBLE : View.VISIBLE);
         holder.mExpandedView.setVisibility(isExpanded? View.VISIBLE : View.INVISIBLE);
-        if (isExpanded) {
+        if (isExpanded) { // FIXME: set the expanded "more info" for the stock
             holder.mCompressedView.getLayoutParams().height = 0;
             holder.mExpandedView.getLayoutParams().height  = 300;
-        } else {
+        } else { // FIXME: set the compressed info for the stock
             holder.mCompressedView.getLayoutParams().height = 100;
             holder.mExpandedView.getLayoutParams().height  = 0;
         }
