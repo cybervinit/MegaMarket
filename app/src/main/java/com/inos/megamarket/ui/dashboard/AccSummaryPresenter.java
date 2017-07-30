@@ -1,7 +1,7 @@
 package com.inos.megamarket.ui.dashboard;
 
-import com.inos.megamarket.data.classes.UsersModel.AccSummaryModel;
-import com.inos.megamarket.data.interfaces.IAccSummaryModel;
+import com.inos.megamarket.data.classes.AccSummaryModel.AccSummaryModel;
+import com.inos.megamarket.data.classes.AccSummaryModel.IAccSummaryModel;
 
 /**
  * Created by vinit on 2017-07-23.
@@ -27,12 +27,5 @@ public class AccSummaryPresenter implements IAccSummaryPresenter {
 
         // FIXME: TEMP
         this.mAccountSummaryModel = new AccSummaryModel(this);
-        this.mAccountSummaryModel.getUsers();
-    }
-
-
-    @Override
-    public void onUsersReceived(String user) {
-        this.mAccountSummaryView.setFinancialAmount(user);
     }
 }

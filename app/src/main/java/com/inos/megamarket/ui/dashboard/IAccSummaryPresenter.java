@@ -9,6 +9,4 @@ public interface IAccSummaryPresenter {
     // May not need methods to be used by the view if there is no user input...
 
     // FIXME: make methods to be used by MODEL
-
-    void onUsersReceived(String user);
 }

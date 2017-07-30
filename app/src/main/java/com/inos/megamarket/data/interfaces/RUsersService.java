@@ -1,4 +1,4 @@
-package com.inos.megamarket.data.classes.UsersModel;
+package com.inos.megamarket.data.interfaces;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import retrofit2.http.GET;
  * Created by vinit on 2017-07-28.
  */
 
-public interface RAccSummaryService {
+public interface RUsersService {
 
     public static final String base = "https://catchapi.herokuapp.com/";
     public static final String version = "v1/";
@@ -23,5 +23,7 @@ public interface RAccSummaryService {
 
     @GET("users")
     Call<Object> users();
+
+    // TODO: Make more methods for USERS
 
 }
