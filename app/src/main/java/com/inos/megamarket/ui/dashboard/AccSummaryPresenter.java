@@ -28,4 +28,6 @@ public class AccSummaryPresenter implements IAccSummaryPresenter {
         // FIXME: TEMP
         this.mAccountSummaryModel = new AccSummaryModel(this);
     }
+
+
 }
